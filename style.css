@@ -17,22 +17,15 @@ html {
 }
 
 h1 {
-  text-align: center;
-  padding: 1.5rem 2.5rem;
-  background-image: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
-  margin: 0 0 2rem 0;
-  font-size: 1.5rem;
-  color: white;
-}
-
-img {
-  display: block;
-  margin: 1rem auto;
-  max-width: 100%;
-}
-
-img:hover {
-  cursor: pointer;
+  text-align: left;
+  line-height: 8px;
+  padding: 1rem;
+  margin: 0;
+  font-size: 14px;
+  color: dimgray;
+  background-color: whitesmoke;
+  opacity: 0.8;
+  height: 12%;
 }
 
 p {
@@ -52,15 +45,20 @@ p {
   margin: 1rem;
   background: white;
   box-shadow: 2px 4px 25px rgba(0, 0, 0, .1);
-  border-radius: 12px;
+  border-radius: 5px;
   overflow: hidden;
   transition: all .2s linear;
+  height: 22rem;
+  min-width: 26rem;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-/* .card:hover {
+.card:hover {
   box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
-  transform: translate3D(0, -2px, 0);
-} */
+  cursor: pointer;
+  /* transform: translate3D(0, -2px, 0); */
+}
 
 @media screen and (min-width: 600px) {
   .card {
@@ -86,9 +84,8 @@ p {
   height: 100vh;
   top: 0;
   left: 0;
-  background-color: #fbc2eb;
+  background-color: rgba(0,0,0,0.8);
   z-index: 3;
-  opacity: 0.8;
 }
 
 button {
@@ -103,4 +100,16 @@ button {
   height: fit-content;
   width: fit-content;
   background: none;
+  color: white;
+}
+
+h5 {
+  background-color: dimgrey;
+  color: white;
+  width: 3rem;
+  height: 1.5rem;
+  text-align: center;
+  line-height: 23px;
+  position: relative;
+  margin: 60% 0 0 4%;
 }
