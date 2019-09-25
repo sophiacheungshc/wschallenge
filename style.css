@@ -79,6 +79,7 @@ p {
 }
 
 .modal {
+  transition: all 3s ease-in-out;
   display: block;
   position: fixed;
   width: 100vw;
@@ -87,4 +88,19 @@ p {
   left: 0;
   background-color: #fbc2eb;
   z-index: 3;
+  opacity: 0.8;
+}
+
+button {
+  position: fixed;
+  right: 20%;
+  top: 10%;
+  font-size: 40px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: inherit;
+  height: fit-content;
+  width: fit-content;
+  background: none;
 }
