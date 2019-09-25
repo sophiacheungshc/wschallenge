@@ -117,9 +117,10 @@ h5 {
 
 /*Carousel*/
 .caro-container {
-  max-width: 1000px;
+  width: fit-content;
   position: relative;
   margin: auto;
+  top: 25%;
 }
 
 /* default hide images */
@@ -131,43 +132,56 @@ h5 {
 .prev, .next {
   cursor: pointer;
   position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
+  top: 42%;
+  width: 50px;
+  height: 50px;
+  padding: 0px;
+  color: dimgray;
+  background-color: white;
+  opacity: 0.5;
+  text-align: center;
+  line-height: 50px;
+  font-size: 40px;
+  transition: 0.5s ease;
+  border-radius: 24px;
 }
 
 /* Position the "next button" to the right */
 .next {
   right: 0;
-  border-radius: 3px 0 0 3px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+  opacity: 1;
 }
 
 /* dots to indicate which slide is active */
+.dots {
+  height: 30px;
+  width: 100%;
+  position: absolute;
+  bottom: 8px;
+  background-color: dimgray;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .dot {
   cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
+  height: 10px;
+  width: 10px;
+  margin: 0 8px;
   border-radius: 50%;
+  border: 1px solid white;
   display: inline-block;
   transition: background-color 0.6s ease;
 }
 
-.active, .dot:hover {
-  background-color: #717171;
+.active {
+  background-color: white;
 }
 
 /* Fading animation */

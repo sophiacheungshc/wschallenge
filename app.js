@@ -108,12 +108,12 @@ class Carousel {
     addArrows() {
         let prev = document.createElement('a');
         prev.setAttribute('class', 'prev');
-        prev.innerText = '&#10094;'
+        prev.innerHTML = `&#10094;`
         prev.addEventListener('click', () => this.moveSlide(-1));
 
         let next = document.createElement('a');
         next.setAttribute('class', 'next');
-        next.innerText = '&#10095;'
+        next.innerHTML = `&#10095;`
         next.addEventListener('click', () => this.moveSlide(1));
 
         this.container.appendChild(prev);
@@ -122,8 +122,11 @@ class Carousel {
 
     addDots() {
         let dots = document.createElement('div');
+        dots.setAttribute('class', 'dots');
+
         for (let i = 0; i < this.images.length; i++) {
             let dot = document.createElement('span');
+            dot.setAttribute('class', 'dot');
             dots.appendChild(dot);
             this.dots.push(dot);
         }
