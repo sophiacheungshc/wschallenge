@@ -18,8 +18,8 @@ html {
 
 h1 {
   text-align: left;
-  line-height: 8px;
-  padding: 1rem;
+  line-height: 15px;
+  padding: 10px;
   margin: 0;
   font-size: 14px;
   color: dimgray;
@@ -49,17 +49,17 @@ p {
   overflow: hidden;
   transition: all .2s linear;
   height: 22rem;
-  min-width: 26rem;
+  min-width: 22rem;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .card:hover {
-  box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
+  box-shadow: 2px 8px 45px rgba(0, 0, 0, .4);
   cursor: pointer;
-  /* transform: translate3D(0, -2px, 0); */
 }
 
+/*media queries: 3 column max if desktop, 1 column max if phone*/
 @media screen and (min-width: 600px) {
   .card {
     flex: 1 1 calc(50% - 2rem);
@@ -72,7 +72,7 @@ p {
   }
 }
 
-.modal.close {
+.modal.hidden {
   display: none;
 }
 
@@ -80,8 +80,8 @@ p {
   transition: all 3s ease-in-out;
   display: block;
   position: fixed;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   background-color: rgba(0,0,0,0.8);
@@ -89,9 +89,9 @@ p {
 }
 
 button {
-  position: fixed;
-  right: 34%;
-  top: 32%;
+  position: absolute;
+  top: -4px;
+  right: 12px;
   font-size: 40px;
   border: none;
   padding: 0;
@@ -117,7 +117,7 @@ h5 {
   text-align: center;
   line-height: 23px;
   position: relative;
-  margin: 60% 0 0 4%;
+  margin: 70% 0 0 5%;
 }
 
 /*Carousel*/
@@ -125,7 +125,7 @@ h5 {
   width: fit-content;
   position: relative;
   margin: auto;
-  top: 33%;
+  top: 29%;
 }
 
 /* default hide images */
@@ -153,12 +153,10 @@ h5 {
   user-select: none;
 }
 
-/* Position the "next button" to the right */
 .next {
   right: 0;
 }
 
-/* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
   opacity: 1;
 }
@@ -191,20 +189,19 @@ h5 {
   background-color: white;
 }
 
-/* Fading animation */
 .fade {
   -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
+  -webkit-animation-duration: 1s;
   animation-name: fade;
-  animation-duration: 1.5s;
+  animation-duration: 1s;
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4}
+  from {opacity: .6}
   to {opacity: 1}
 }
 
 @keyframes fade {
-  from {opacity: .4}
+  from {opacity: .6}
   to {opacity: 1}
 }

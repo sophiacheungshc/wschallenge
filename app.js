@@ -3,58 +3,57 @@ const container = document.createElement('div');
 container.setAttribute('class', 'container');
 app.appendChild(container);
 
-//fetch request sent to json db server
+//fetch request sent to local json db server
 fetch('http://localhost:3000/data')
     .then( res => res.json() )
     .then( res => {
+        //for each furniture item, display a card with details (price and name)
         res.groups.forEach((furniture, idx) => {
             const card = document.createElement('div');
             card.setAttribute('class', 'card');
             card.setAttribute('style', `background-image: url(${furniture.hero.href})`);
             
+            //modal starts off as hidden
             const modal = document.createElement('div');
-            modal.setAttribute('class', 'modal close');
+            modal.setAttribute('class', 'modal hidden');
             modal.setAttribute('id', `${idx}`)
-            
-            const button = document.createElement('button');
-            button.innerHTML = "x";
-            button.addEventListener('click', function(){
-                modal.setAttribute('class', 'modal close');
-            })
 
             const h1 = document.createElement('h1');
             h1.textContent = furniture.name;
-
+            
             // priceRange => selling => high/low
             // price => regular/selling
             const price = document.createElement('h5');
             price.textContent = `$ ${furniture.priceRange ? furniture.priceRange.selling.high : furniture.price.regular}`;
             
-            card.addEventListener('click', function(){
-                modal.classList.remove("close");
+            let caro = new Carousel(furniture.images, modal);
+            modal.appendChild(caro.add());
+
+            card.appendChild(modal);
+            card.appendChild(h1);
+            card.appendChild(price);
+            
+            //show previously hidden carousel overlay when card is clicked
+            card.addEventListener('click', () => {
+                modal.classList.remove('hidden');
             });
 
             container.appendChild(card);
-            card.appendChild(modal);
-            modal.appendChild(button);
-
-            let caro = new Carousel(furniture.images);
-            modal.appendChild(caro.add());
-
-            card.appendChild(h1);
-            card.appendChild(price);
-
         })
     })
     .catch(e => console.log(e))
 
+//ES6 class to keep carousel logic in one place
 class Carousel {
-    constructor(images) {
+    constructor(images, parent) {
         this.images = images;
+        this.parent = parent;
         this.container = document.createElement('div');
         this.container.setAttribute('class', 'caro-container');
-        this.slideIdx = 1;
 
+        this.addX();
+
+        this.slideIdx = 1;
         this.slides = [];
         this.addSlides();
 
@@ -67,6 +66,17 @@ class Carousel {
 
     add() {
         return this.container;
+    }
+
+    addX(){
+        const button = document.createElement('button');
+        button.innerHTML = "x";
+        button.addEventListener('click', (e) => {
+            //needed to stop event bubbling!
+            e.stopPropagation();
+            this.parent.classList.add('hidden');
+        });
+        this.container.appendChild(button);
     }
 
     addSlides() {
@@ -84,15 +94,18 @@ class Carousel {
     }
 
     showSlides(n) {
+        //loop back around when going out of bounds
         if (n > this.slides.length) {
             this.slideIdx = 1;
         } else if (n < 1) {
             this.slideIdx = this.slides.length;
         }
 
+        //only display image at current slide index
         for (let i = 0; i < this.slides.length; i++) {
             this.slides[i].style.display = 'none';
         }
+        //have dots show corresponding progress
         for (let i = 0; i < this.dots.length; i++) {
             this.dots[i].classList.remove('active');
         }
