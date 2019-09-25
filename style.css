@@ -90,8 +90,8 @@ p {
 
 button {
   position: fixed;
-  right: 20%;
-  top: 10%;
+  right: 34%;
+  top: 32%;
   font-size: 40px;
   border: none;
   padding: 0;
@@ -100,8 +100,13 @@ button {
   height: fit-content;
   width: fit-content;
   background: none;
-  color: white;
+  color: black;
+  opacity: 0.5;
   z-index: 10;
+}
+
+button:hover {
+  opacity: 0.8;
 }
 
 h5 {
@@ -120,12 +125,13 @@ h5 {
   width: fit-content;
   position: relative;
   margin: auto;
-  top: 25%;
+  top: 33%;
 }
 
 /* default hide images */
 .slide {
   display: none;
+  cursor: default;
 }
 
 /* prev and next buttons */
@@ -144,6 +150,7 @@ h5 {
   font-size: 40px;
   transition: 0.5s ease;
   border-radius: 24px;
+  user-select: none;
 }
 
 /* Position the "next button" to the right */
